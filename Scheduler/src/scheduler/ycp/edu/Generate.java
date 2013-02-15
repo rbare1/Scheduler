@@ -11,10 +11,10 @@ public class Generate {
 	
 	public void GenerateSchedule(){
 		Course course1 = getCourse();		// course 1 is most important
-		Course course2 = getCourse();		// course 2 is second, etc
-		Course course3 = getCourse();
-		Course course4 = getCourse();
-		Course course5 = getCourse();
+		Course course2 = course2.getCourse();		// course 2 is second, etc
+		Course course3 = course3.getCourse();
+		Course course4 = course4.getCourse();
+		Course course5 = course5.getCourse();
 		
 		ArrayList<Course> scheduleM = new ArrayList<Course>();
 		ArrayList<Course> scheduleT = new ArrayList<Course>();
@@ -42,19 +42,20 @@ public class Generate {
 				course = course5;
 			}
 			cnt++;
-			if(course.days.contains("M")){		// separates classes by the day of the week they are in
-				scheduleM.add(course);			// classes can be in separate days
+			
+			if(course.getDays().contains("M")){		// separates classes by the day of the week they are in
+				scheduleM.add(course);				// classes can be in separate days
 			}
-			if(course.days.contains("T")){
+			if(course.getDays().contains("T")){
 				scheduleT.add(course);
 			}
-			if(course.days.contains("W")){
+			if(course.getDays().contains("W")){
 				scheduleW.add(course);
 			}
-			if(course.days.contains("R")){
+			if(course.getDays().contains("R")){
 				scheduleR.add(course);
 			}
-			if(course.days.contains("F")){
+			if(course.getDays().contains("F")){
 				scheduleF.add(course);
 			}
 			

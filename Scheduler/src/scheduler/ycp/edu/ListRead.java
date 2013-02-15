@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.StringTokenizer;
 
 public class ListRead {
@@ -15,7 +16,7 @@ public class ListRead {
 		fileName = Name;
 	}
 	
-	public ArrayList Read() throws IOException{
+	public List<Course> Read() throws IOException{
 		BufferedReader list = new BufferedReader(new FileReader(fileName));
 		ArrayList<Course> courses = new ArrayList<Course>();
 		String courseChoice = list.readLine();
@@ -23,14 +24,14 @@ public class ListRead {
 			Course course = new Course();
 			StringTokenizer description = new StringTokenizer(courseChoice,",");
 			course.setNum(description.nextToken()); 
-			course.CRNNum = Integer.valueOf(description.nextToken());
-			course.name = description.nextToken();
-			course.credit = Integer.valueOf(description.nextToken());
-			course.days = description.nextToken();
-			course.startTime = Double.parseDouble(description.nextToken());
-			course.endTime = Double.parseDouble(description.nextToken());
-			course.instructor = description.nextToken();
-			course.room = description.nextToken();
+			course.setCRNNum(Integer.valueOf(description.nextToken()));
+			course.setName(description.nextToken());
+			course.setCredit(Integer.valueOf(description.nextToken()));
+			course.setDays(description.nextToken());
+			course.setStartTime(Double.parseDouble(description.nextToken()));
+			course.setEndTime(Double.parseDouble(description.nextToken()));
+			course.setInstructor(description.nextToken());
+			course.setRoom(description.nextToken());
 			courses.add(course);
 			courseChoice = list.readLine();
 		}
