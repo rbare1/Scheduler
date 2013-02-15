@@ -11,3 +11,4 @@ public class Course {
 	public String instructor;
 	public String room;
 }
+
