@@ -16,24 +16,25 @@ public class ListRead {
 	}
 	
 	public ArrayList Read() throws IOException{
-	File fileName = new File("fileName");
-	BufferedReader list = new BufferedReader(new FileReader(fileName));
-	ArrayList<Course> courses = new ArrayList<Course>();
-	String courseChoice = list.readLine();
-	while(courseChoice!="NULL"){
-		Course course = new Course();
-		StringTokenizer description = new StringTokenizer(courseChoice,",");
-		course.num = description.nextToken(); 
-		course.CRNNum = Integer.valueOf(description.nextToken());
-		course.name = description.nextToken();
-		course.credit = description.nextToken();
-		course.days = description.nextToken();
-		course.startTime = Double.parseDouble(description.nextToken());
-		course.endTime = Double.parseDouble(description.nextToken());
-		course.instructor = description.nextToken();
-		course.room = description.nextToken();
-		courses.add(course);
-	}
-	return courses;
+		BufferedReader list = new BufferedReader(new FileReader(fileName));
+		ArrayList<Course> courses = new ArrayList<Course>();
+		String courseChoice = list.readLine();
+		while(courseChoice != null){
+			Course course = new Course();
+			StringTokenizer description = new StringTokenizer(courseChoice,",");
+			course.num = description.nextToken(); 
+			course.CRNNum = Integer.valueOf(description.nextToken());
+			course.name = description.nextToken();
+			course.credit = Integer.valueOf(description.nextToken());
+			course.days = description.nextToken();
+			course.startTime = Double.parseDouble(description.nextToken());
+			course.endTime = Double.parseDouble(description.nextToken());
+			course.instructor = description.nextToken();
+			course.room = description.nextToken();
+			courses.add(course);
+			courseChoice = list.readLine();
+		}
+		list.close();
+		return courses;
 	}
 }

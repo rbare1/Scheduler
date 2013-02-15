@@ -4,7 +4,7 @@ public class Course {
 	public String num;
 	public int CRNNum;
 	public String name;
-	public String credit;
+	public int credit;
 	public String days;
 	public double startTime;
 	public double endTime;
