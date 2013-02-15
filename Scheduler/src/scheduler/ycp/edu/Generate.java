@@ -2,13 +2,20 @@ package scheduler.ycp.edu;
 
 import java.util.ArrayList;
 
+
 public class Generate { 
-	public static void main(String[] args) {
-		Course course1;		// course 1 is most important
-		Course course2;		// course 2 is second, etc
-		Course course3;
-		Course course4;
-		Course course5;
+	
+	private Course c;
+	
+	public void main(String[] args) {
+	}
+	
+	public void GenerateSchedule(){
+		Course course1 = getCourse();		// course 1 is most important
+		Course course2 = getCourse();		// course 2 is second, etc
+		Course course3 = getCourse();
+		Course course4 = getCourse();
+		Course course5 = getCourse();
 		
 		ArrayList<Course> scheduleM = new ArrayList<Course>();
 		ArrayList<Course> scheduleT = new ArrayList<Course>();
@@ -32,29 +39,38 @@ public class Generate {
 			else if(cnt == 3){
 				course = course4;
 			}
-			else if(cnt == 4){
+			else{
 				course = course5;
 			}
 			cnt++;
-			if(course.days.contains('M')){
+			if(course.days.contains("M")){
 				scheduleM.add(course);
 			}
-			if(course.days.contains('T')){
+			if(course.days.contains("T")){
 				scheduleT.add(course);
 			}
-			if(course.days.contains('W')){
+			if(course.days.contains("W")){
 				scheduleW.add(course);
 			}
-			if(course.days.contains('R')){
+			if(course.days.contains("R")){
 				scheduleR.add(course);
 			}
-			if(course.days.contains('F')){
+			if(course.days.contains("F")){
 				scheduleF.add(course);
 			}
 			
 		}
 	}
-
+	/*
+	public void setCourse(Course course) {
+		c = course;
+	}
+	*/
+	public Course getCourse() {
+		return c;
+	}
+	
 	
 }
+
 
