@@ -18,25 +18,25 @@ public class GenerateTest {
 		@Before
 		public void setUp() {
 		// create test fixture objects
-			course1.name = "CS101";
-			course1.days = "MWF";
+			course1.setName("CS101");
+			course1.setDays("MWF");
 			
-			course2.name = "ART101";
-			course2.days = "MW";
+			course2.setName("ART101");
+			course2.setDays("MW");
 			
-			course3.name = "PE101";
-			course3.days = "F";
+			course3.setName("PE101");
+			course3.setDays("F");
 			
-			course4.name = "ECE101";
-			course4.days = "TR";
+			course4.setName("ECE101");
+			course4.setDays("TR");
 			
-			course5.name = "PHY101";
-			course1.days = "R";
+			course5.setName("PHY101");
+			course1.setDays("R");
 			
 		}
 	@Test
 public void testGetCourse() throws Exception {		
-		assertEquals("CS101", course1.getCourse().name);
+		assertEquals("CS101", course1.);
 		
 	}
 

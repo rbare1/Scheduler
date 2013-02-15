@@ -43,19 +43,19 @@ public class Generate {
 				course = course5;
 			}
 			cnt++;
-			if(course.days.contains("M")){
+			if(course.getDays().contains("M")){
 				scheduleM.add(course);
 			}
-			if(course.days.contains("T")){
+			if(course.getDays().contains("T")){
 				scheduleT.add(course);
 			}
-			if(course.days.contains("W")){
+			if(course.getDays().contains("W")){
 				scheduleW.add(course);
 			}
-			if(course.days.contains("R")){
+			if(course.getDays().contains("R")){
 				scheduleR.add(course);
 			}
-			if(course.days.contains("F")){
+			if(course.getDays().contains("F")){
 				scheduleF.add(course);
 			}
 			
