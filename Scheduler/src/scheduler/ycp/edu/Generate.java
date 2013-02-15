@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 public class Generate { 
 	
-	private Course c;
 	
 	public void main(String[] args) {
 	}
@@ -26,7 +25,7 @@ public class Generate {
 		int cnt = 0;
 		Course course;
 		
-		for(int i =0; i < numCourses; i++){
+		for(int i =0; i < numCourses; i++){		// cycles through each course to add to the appropriate list
 			if(cnt == 0){
 				course = course1;
 			}
@@ -43,8 +42,8 @@ public class Generate {
 				course = course5;
 			}
 			cnt++;
-			if(course.days.contains("M")){
-				scheduleM.add(course);
+			if(course.days.contains("M")){		// separates classes by the day of the week they are in
+				scheduleM.add(course);			// classes can be in separate days
 			}
 			if(course.days.contains("T")){
 				scheduleT.add(course);
@@ -61,15 +60,6 @@ public class Generate {
 			
 		}
 	}
-	/*
-	public void setCourse(Course course) {
-		c = course;
-	}
-	*/
-	public Course getCourse() {
-		return c;
-	}
-	
 	
 }
 

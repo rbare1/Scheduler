@@ -21,7 +21,7 @@ public class ListReadTest {
 
 	@Test
 	public void testListRead() throws Exception {
-		assertEquals("CS101", testCourses.get(0).num);
+		assertEquals("CS101", testCourses.get(0).getNum());
 		assertEquals(20168 , testCourses.get(0).CRNNum);
 		assertEquals("Fund Comp Sci I", testCourses.get(0).name);
 		assertEquals(2 , testCourses.get(0).credit);
@@ -32,7 +32,7 @@ public class ListReadTest {
 		assertEquals("Babcock", testCourses.get(0).instructor);
 		assertEquals("KEC 130", testCourses.get(0).room);
 		
-		assertEquals("ART101", testCourses.get(7).num);
+		assertEquals("ART101", testCourses.get(7).getNum());
 		assertEquals(20759 , testCourses.get(7).CRNNum);
 		assertEquals("Into Art Apprec", testCourses.get(7).name);
 		assertEquals(3 , testCourses.get(7).credit);

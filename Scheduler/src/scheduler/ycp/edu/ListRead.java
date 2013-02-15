@@ -22,7 +22,7 @@ public class ListRead {
 		while(courseChoice != null){
 			Course course = new Course();
 			StringTokenizer description = new StringTokenizer(courseChoice,",");
-			course.num = description.nextToken(); 
+			course.setNum(description.nextToken()); 
 			course.CRNNum = Integer.valueOf(description.nextToken());
 			course.name = description.nextToken();
 			course.credit = Integer.valueOf(description.nextToken());
