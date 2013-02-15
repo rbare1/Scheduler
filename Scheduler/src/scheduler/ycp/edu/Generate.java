@@ -1,26 +1,25 @@
 package scheduler.ycp.edu;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Generate { 
 	
-	
-	public void main(String[] args) {
-	}
-	
+	ArrayList<Course> scheduleM = new ArrayList<Course>();
+	ArrayList<Course> scheduleT = new ArrayList<Course>();
+	ArrayList<Course> scheduleW = new ArrayList<Course>();
+	ArrayList<Course> scheduleR = new ArrayList<Course>();
+	ArrayList<Course> scheduleF = new ArrayList<Course>();
 	public void GenerateSchedule(){
-		Course course1 = getCourse();		// course 1 is most important
-		Course course2 = course2.getCourse();		// course 2 is second, etc
-		Course course3 = course3.getCourse();
-		Course course4 = course4.getCourse();
-		Course course5 = course5.getCourse();
+
+		Course course1 = new Course(null, 0, null, 0, null, 0, 0, null, null);		// course 1 is most important
+		Course course2 = new Course(null, 0, null, 0, null, 0, 0, null, null);		// course 2 is second, etc
+		Course course3 = new Course(null, 0, null, 0, null, 0, 0, null, null);
+		Course course4 = new Course(null, 0, null, 0, null, 0, 0, null, null);
+		Course course5 = new Course(null, 0, null, 0, null, 0, 0, null, null);
 		
-		ArrayList<Course> scheduleM = new ArrayList<Course>();
-		ArrayList<Course> scheduleT = new ArrayList<Course>();
-		ArrayList<Course> scheduleW = new ArrayList<Course>();
-		ArrayList<Course> scheduleR = new ArrayList<Course>();
-		ArrayList<Course> scheduleF = new ArrayList<Course>();
+		
 		int numCourses = 5;
 		int cnt = 0;
 		Course course;
@@ -60,6 +59,11 @@ public class Generate {
 			}
 			
 		}
+		
+	}
+	public List<Course> getScheduleM(){
+		GenerateSchedule();
+		return scheduleM;
 	}
 	
 }

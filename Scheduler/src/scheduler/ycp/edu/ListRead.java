@@ -21,7 +21,7 @@ public class ListRead {
 		ArrayList<Course> courses = new ArrayList<Course>();
 		String courseChoice = list.readLine();
 		while(courseChoice != null){
-			Course course = new Course();
+			Course course = new Course(null, 0, null, 0, null, 0, 0, null, null);
 			StringTokenizer description = new StringTokenizer(courseChoice,",");
 			course.setNum(description.nextToken()); 
 			course.setCRNNum(Integer.valueOf(description.nextToken()));
