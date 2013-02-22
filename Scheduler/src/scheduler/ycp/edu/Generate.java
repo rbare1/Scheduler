@@ -14,11 +14,12 @@ public class Generate {
 	boolean checkOpen = false;
 
 	
-	public void GenerateSchedule(Course course1, Course course2, Course course3, Course course4, Course course5){
+	public void GenerateSchedule(Course course1, Course course2, Course course3, Course course4, Course course5, Course course6){
 		
 		int numCourses = 5;
 		int cnt = 0;
 		Course course;
+		checkOpen = false;
 		
 		for(int i = 0; i < numCourses; i++){		// cycles through each course to add to the appropriate list
 			if(cnt == 0){
@@ -37,43 +38,39 @@ public class Generate {
 				course = course5;
 			}
 			cnt++;
-			
 			// separates classes by the day of the week they are in
 			// classes can be in multiple days
 
-			if(course.getDays() == "M"){	// .contains is not working for some reason
-											// it is the cause of null pointer exceptions
-											// since the test tries to access elements of an empty array
+			if(course.getDays() == "M" || course.getDays() == "MW" || course.getDays() == "MWF"){
 				checkOpen = checkScheduleM(course);
 				if(checkOpen){
 					scheduleM.add(course);	
 				}
 			}
-			if(course.getDays().contains("T")){
+			if(course.getDays() == "T" || course.getDays() == "TR"){
 				checkOpen = checkScheduleT(course);
 				if(checkOpen){
 					scheduleT.add(course);
 				}	
 			}
-			if(course.getDays().contains("W")){
+			if(course.getDays() == "W" || course.getDays() == "WF" || course.getDays() == "MW"){
 				checkOpen = checkScheduleW(course);
 				if(checkOpen){
 					scheduleW.add(course);
 				}
 			}
-			if(course.getDays().contains("R")){
+			if(course.getDays() == "R" || course.getDays() == "TR"){
 				checkOpen = checkScheduleT(course);
 				if(checkOpen){
 					scheduleR.add(course);
 				}
 			}
-			if(course.getDays().contains("F")){
+			if(course.getDays() == "F" || course.getDays() == "WF" || course.getDays() == "MWF"){
 				checkOpen = checkScheduleF(course);
 				if(checkOpen){
 					scheduleF.add(course);
 				}
 			}
-			scheduleM.add(course1);
 		}
 		
 	}
@@ -112,6 +109,9 @@ public class Generate {
 				checkOpen = true;
 			}
 		}
+		if(scheduleM.size() == 0){	// List is empty so no time conflicts, for loop doesn't run in list is empty
+			checkOpen = true;
+		}
 		return checkOpen;
 	}
 	
@@ -128,6 +128,9 @@ public class Generate {
 			else{
 				checkOpen = true;
 			}
+		}
+		if(scheduleT.size() == 0){
+			checkOpen = true;
 		}
 		return checkOpen;
 	}
@@ -146,6 +149,9 @@ public class Generate {
 				checkOpen = true;
 			}
 		}
+		if(scheduleW.size() == 0){
+			checkOpen = true;
+		}
 		return checkOpen;
 	}
 	
@@ -163,6 +169,9 @@ public class Generate {
 				checkOpen = true;
 			}
 		}
+		if(scheduleR.size() == 0){
+			checkOpen = true;
+		}
 		return checkOpen;
 	}
 	
@@ -179,6 +188,9 @@ public class Generate {
 			else{
 				checkOpen = true;
 			}
+		}
+		if(scheduleF.size() == 0){
+			checkOpen = true;
 		}
 		return checkOpen;
 	}

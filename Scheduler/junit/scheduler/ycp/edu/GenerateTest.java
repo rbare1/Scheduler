@@ -17,6 +17,8 @@ public class GenerateTest {
 		private Course course3 = new Course(null, 0, null, 0, null, 0, 0, null, null);
 		private Course course4 = new Course(null, 0, null, 0, null, 0, 0, null, null);
 		private Course course5 = new Course(null, 0, null, 0, null, 0, 0, null, null);
+		private Course course6 = new Course(null, 0, null, 0, null, 0, 0, null, null);
+		
 		private List<Course> scheduleM = new ArrayList<Course>();
 		private List<Course> scheduleT = new ArrayList<Course>();
 		private List<Course> scheduleW = new ArrayList<Course>();
@@ -48,11 +50,16 @@ public class GenerateTest {
 			course4.setEndTime(4.15);
 				
 			course5.setNum("PHY101");
-			course1.setDays("R");
-			course1.setStartTime(1.0);
-			course1.setEndTime(2.0);
+			course5.setDays("R");
+			course5.setStartTime(1.0);
+			course5.setEndTime(2.0);
 			
-			generate.GenerateSchedule(course1, course2, course3, course4, course5);
+			course6.setNum("BUS101");
+			course6.setDays("M");
+			course6.setStartTime(9.30);	// intentional time conflicts with CS101
+			course6.setEndTime(10.30);
+			
+			generate.GenerateSchedule(course1, course2, course3, course4, course5, course6);
 			scheduleM = generate.getScheduleM();
 			scheduleT = generate.getScheduleT();
 			scheduleW = generate.getScheduleW();
@@ -62,11 +69,11 @@ public class GenerateTest {
 		}
 		
 	@Test
-	public void testGetScheduleM() throws Exception {	
+	public void testGetScheduleM() throws Exception {
+		 assertEquals(2, scheduleM.size());
 		 assertEquals("CS101", scheduleM.get(0).getNum());	
 		 assertEquals("ART101", scheduleM.get(1).getNum());	
-		 assertEquals(3, scheduleM.size());
-		 
+		 //assertEquals("BUS101", scheduleM.get(2).getNum());	// if this causes a failure it's a good thing!
 		}
 	//@Test
 	public void testGetScheduleT() throws Exception {	
