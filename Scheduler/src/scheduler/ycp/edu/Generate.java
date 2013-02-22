@@ -10,11 +10,12 @@ public class Generate {
 	private static List<Course> scheduleW = new ArrayList<Course>();
 	private static List<Course> scheduleR = new ArrayList<Course>();
 	private static List<Course> scheduleF = new ArrayList<Course>();
+	private List<String> track = new ArrayList<String>();
 	
 	boolean checkOpen = false;
 
 	
-	public void GenerateSchedule(Course course1, Course course2, Course course3, Course course4, Course course5, Course course6){
+	public void GenerateSchedule(Course course1, Course course2, Course course3, Course course4, Course course5, Course course6, Course course7){
 		
 		int numCourses = 5;
 		int cnt = 0;
@@ -22,6 +23,8 @@ public class Generate {
 		checkOpen = false;
 		
 		for(int i = 0; i < numCourses; i++){		// cycles through each course to add to the appropriate list
+			track.clear();	//clears the tracker for each course
+			
 			if(cnt == 0){
 				course = course1;
 			}
@@ -34,41 +37,67 @@ public class Generate {
 			else if(cnt == 3){
 				course = course4;
 			}
-			else{
+			else if(cnt == 4){
 				course = course5;
+			}
+			else if(cnt == 5){
+				course = course6;
+			}
+			else{
+				course = course7;
 			}
 			cnt++;
 			// separates classes by the day of the week they are in
 			// classes can be in multiple days
 
-			if(course.getDays() == "M" || course.getDays() == "MW" || course.getDays() == "MWF"){
+			if(course.getDays() == "M" || course.getDays() == "MW" || course.getDays() == "MWF"){	// using == since .contains isn't working
 				checkOpen = checkScheduleM(course);
 				if(checkOpen){
 					scheduleM.add(course);	
+					track.add("M");
+				}
+				else{
+					removeCourse();
 				}
 			}
 			if(course.getDays() == "T" || course.getDays() == "TR"){
 				checkOpen = checkScheduleT(course);
 				if(checkOpen){
 					scheduleT.add(course);
+					track.add("T");
 				}	
+				else{
+					removeCourse();
+				}
 			}
-			if(course.getDays() == "W" || course.getDays() == "WF" || course.getDays() == "MW"){
+			if(course.getDays() == "W" || course.getDays() == "WF" || course.getDays() == "MW" || course.getDays() == "MWF"){
 				checkOpen = checkScheduleW(course);
 				if(checkOpen){
 					scheduleW.add(course);
+					track.add("W");
+				}
+				else{
+					removeCourse();
 				}
 			}
 			if(course.getDays() == "R" || course.getDays() == "TR"){
-				checkOpen = checkScheduleT(course);
+				checkOpen = checkScheduleR(course);
 				if(checkOpen){
 					scheduleR.add(course);
+					track.add("R");
+				}
+				else{
+					removeCourse();
 				}
 			}
 			if(course.getDays() == "F" || course.getDays() == "WF" || course.getDays() == "MWF"){
 				checkOpen = checkScheduleF(course);
 				if(checkOpen){
 					scheduleF.add(course);
+					track.add("F");
+				}
+				else{
+					removeCourse();
 				}
 			}
 		}
@@ -193,6 +222,27 @@ public class Generate {
 			checkOpen = true;
 		}
 		return checkOpen;
+	}
+	
+	public void removeCourse(){		// removes a course from any other schedule it may have been added to before the time conflict
+		for(int i = 0; i < track.size(); i++){
+			if(track.get(i) == "M"){
+				scheduleM.remove(scheduleM.size() -1);
+			}
+			if(track.get(i) == "T"){
+				scheduleT.remove(scheduleT.size() -1);
+			}
+			if(track.get(i) == "W"){
+				scheduleW.remove(scheduleW.size() -1);
+			}
+			if(track.get(i) == "R"){
+				scheduleR.remove(scheduleR.size() - 1);
+			}
+			if(track.get(i) == "F"){
+				scheduleR.remove(scheduleF.size() -1);
+			}
+		}
+		
 	}
 	
 }

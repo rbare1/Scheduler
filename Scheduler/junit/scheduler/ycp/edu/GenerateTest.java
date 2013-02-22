@@ -18,6 +18,7 @@ public class GenerateTest {
 		private Course course4 = new Course(null, 0, null, 0, null, 0, 0, null, null);
 		private Course course5 = new Course(null, 0, null, 0, null, 0, 0, null, null);
 		private Course course6 = new Course(null, 0, null, 0, null, 0, 0, null, null);
+		private Course course7 = new Course(null, 0, null, 0, null, 0, 0, null, null);
 		
 		private List<Course> scheduleM = new ArrayList<Course>();
 		private List<Course> scheduleT = new ArrayList<Course>();
@@ -41,8 +42,8 @@ public class GenerateTest {
 			
 			course3.setNum("PE101");
 			course3.setDays("F");
-			course3.setStartTime(9.0);
-			course3.setEndTime(10.15);
+			course3.setStartTime(8.0);
+			course3.setEndTime(8.5);
 					
 			course4.setNum("ECE101");
 			course4.setDays("TR");
@@ -59,7 +60,12 @@ public class GenerateTest {
 			course6.setStartTime(9.30);	// intentional time conflicts with CS101
 			course6.setEndTime(10.30);
 			
-			generate.GenerateSchedule(course1, course2, course3, course4, course5, course6);
+			course7.setNum("SOC101");
+			course7.setDays("TR");
+			course7.setStartTime(1.0);	// intentional conflict with PHY101
+			course7.setEndTime(2.0);
+			
+			generate.GenerateSchedule(course1, course2, course3, course4, course5, course6, course7);
 			scheduleM = generate.getScheduleM();
 			scheduleT = generate.getScheduleT();
 			scheduleW = generate.getScheduleW();
@@ -73,25 +79,28 @@ public class GenerateTest {
 		 assertEquals(2, scheduleM.size());
 		 assertEquals("CS101", scheduleM.get(0).getNum());	
 		 assertEquals("ART101", scheduleM.get(1).getNum());	
-		 //assertEquals("BUS101", scheduleM.get(2).getNum());	// if this causes a failure it's a good thing!
+		 //assertEquals("BUS101", scheduleM.get(2).getNum());	// meant to cause failure
 		}
-	//@Test
+	@Test
 	public void testGetScheduleT() throws Exception {	
-		 assertEquals("ECE101", scheduleT.get(0).getNum());		
+		 assertEquals("ECE101", scheduleT.get(0).getNum());	
+	//	 assertEquals("SOC101", scheduleT.get(1).getNum());		// meant to cause failure
 		}
-	//@Test
+	@Test
 	public void testGetScheduleW() throws Exception {	
 		assertEquals("CS101", scheduleW.get(0).getNum());	
 		 assertEquals("ART101", scheduleW.get(1).getNum());	
 		}
-	//@Test
+	@Test
 	public void testGetScheduleR() throws Exception {	
 		 assertEquals("ECE101", scheduleR.get(0).getNum());	
 		 assertEquals("PHY101", scheduleR.get(1).getNum());	
+		// assertEquals("SOC101", scheduleR.get(2).getNum());		// meant to cause failure
 		}
-	//@Test
+	@Test
 	public void testGetScheduleF() throws Exception {	
-		 assertEquals("PE101", scheduleF.get(0).getNum());	
+		assertEquals("CS101", scheduleF.get(0).getNum());
+		 assertEquals("PE101", scheduleF.get(1).getNum());	
 		}
 
 }
