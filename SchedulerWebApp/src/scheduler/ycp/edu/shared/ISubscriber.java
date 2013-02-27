@@ -1,7 +1,5 @@
 package scheduler.ycp.edu.shared;
 
-import IPublisher;
-import Object;
 
 /**
  * Interface implemented by classes that are event subscribers.

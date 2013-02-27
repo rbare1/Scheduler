@@ -1,7 +1,5 @@
 package scheduler.ycp.edu.shared;
 
-import ISubscriber;
-import Object;
 
 public interface IPublisher {
 

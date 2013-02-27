@@ -1,14 +1,12 @@
 package scheduler.ycp.edu.shared;
 
-import ArrayList;
-import IPublisher;
-import ISubscriber;
-import Iterator;
-import List;
-import Object;
-import Override;
-import Publisher.Registration;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
+/**
+ * Default implementation of {@link IPublisher} interface.
+ */
 public abstract class Publisher implements IPublisher {
 	private static class Registration {
 		Object key;
