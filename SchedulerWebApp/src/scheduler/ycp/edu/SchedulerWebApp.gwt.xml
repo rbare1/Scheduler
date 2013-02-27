@@ -20,7 +20,6 @@
   <!-- Other module inherits                                      -->
 
   <!-- Specify the app entry point class.                         -->
-  <entry-point class='scheduler.ycp.edu.client.SchedulerWebApp'/>
 
   <!-- Specify the paths for translatable code                    -->
   <source path='client'/>
