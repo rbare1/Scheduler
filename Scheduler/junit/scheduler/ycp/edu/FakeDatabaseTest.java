@@ -7,6 +7,8 @@ import java.io.File;
 import org.junit.Before;
 import org.junit.Test;
 
+import scheduler.ycp.edu.shared.Course;
+
 public class FakeDatabaseTest {
 	
 	private Course testCourse1 = new Course(null, 0, null, 0, null, 0, 0, null, null);
