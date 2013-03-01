@@ -46,6 +46,7 @@ public class ListReadTest {
 		assertEquals("Stabley", testCourses.get(7).getInstructor());
 		assertEquals("WOLF 316", testCourses.get(7).getRoom());
 
+
 	}
 
 }

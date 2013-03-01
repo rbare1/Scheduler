@@ -1,5 +1,7 @@
 package scheduler.ycp.edu;
 
+import java.util.List;
+
 public interface IDatabase {
-	public Course findCourse(String courseName);
+	public List<Course> findCourse(String courseName);
 }
