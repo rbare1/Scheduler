@@ -11,7 +11,7 @@ public class FakeDatabase implements IDatabase {
 		
 		// Could load courses from CSV file
 		
-		Course course = new Course();
+		Course course = new Course(null, 0, null, 0, null, 0, 0, null, null);
 		course.setName("Test Course");
 		
 		coursesByName.put(course.getName(), course);
