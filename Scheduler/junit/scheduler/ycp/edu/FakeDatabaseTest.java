@@ -21,10 +21,10 @@ public class FakeDatabaseTest {
 		FakeDatabase database = new FakeDatabase();
 		database.CreateFakeDatabase(fileName);
 		testCourse1 = database.findCourse("CS101").get(0);
-		testCourse2 = database.findCourse("ART101").get(3);
+		/*testCourse2 = database.findCourse("ART101").get(3);
 		testCourse3 = database.findCourse("PE110").get(1);
 		testCourse4 = database.findCourse("WRT102").get(6);
-		testCourse5 = database.findCourse("PHL221").get(0);
+		testCourse5 = database.findCourse("PHL221").get(0);*/
 		
 	}
 	
