@@ -32,7 +32,7 @@ public class ListReadTest {
 		assertEquals(9.5 , testCourses.get(0).getEndTime(), .1);
 		assertEquals("Babcock", testCourses.get(0).getInstructor());
 		assertEquals("KEC 130", testCourses.get(0).getRoom());
-		
+
 		assertEquals("ART101", testCourses.get(7).getNum());
 		assertEquals(20759 , testCourses.get(7).getCRNNum());
 		assertEquals("Into Art Apprec", testCourses.get(7).getName());
@@ -43,5 +43,4 @@ public class ListReadTest {
 		assertEquals("Stabley", testCourses.get(7).getInstructor());
 		assertEquals("WOLF 316", testCourses.get(7).getRoom());
 	}
-
 }

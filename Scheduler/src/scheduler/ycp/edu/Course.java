@@ -1,5 +1,6 @@
 package scheduler.ycp.edu;
 
+
 public class Course {
 	private String num;
 	private int CRNNum;
@@ -10,6 +11,19 @@ public class Course {
 	private double endTime;
 	private String instructor;
 	private String room;
+	
+	public Course(String num2, int CRNNum2, String name2, int credit2, String days2, double startTime2, double endTime2, String instructor2, String room2) {
+		setNum(num2);
+		setCRNNum(CRNNum2);
+		setName(name2);
+		setCredit(credit2);
+		setDays(days2);
+		setStartTime(startTime2);
+		setEndTime(endTime2);
+		setInstructor(instructor2);
+		setRoom(room2);		
+	}
+	
 	public String getNum() {
 		return num;
 	}
