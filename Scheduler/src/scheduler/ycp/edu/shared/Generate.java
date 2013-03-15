@@ -16,7 +16,8 @@ public class Generate {
 
 	
 	public void GenerateSchedule(Course course1, Course course2, Course course3, Course course4, Course course5, Course course6, Course course7){
-		
+		//TODO: make GenerateSchedule take an array list of courses rather than a bunch of courses
+		// course = list.get(i);
 		int numCourses = 5;
 		int cnt = 0;
 		Course course;

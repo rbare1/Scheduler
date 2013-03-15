@@ -34,12 +34,14 @@ public class ListReadTest {
 		assertEquals(9.5 , testCourses.get(0).getEndTime(), .1);
 		assertEquals("Babcock", testCourses.get(0).getInstructor());
 		assertEquals("KEC 130", testCourses.get(0).getRoom());
+		
+		assertEquals("CS101", testCourses.get(1).getNum());
 
 		
 		assertEquals("ART101", testCourses.get(7).getNum());
 
 		assertEquals(20759 , testCourses.get(7).getCRNNum());
-		assertEquals("Into Art Apprec", testCourses.get(7).getName());
+		assertEquals("Intro Art Apprec", testCourses.get(7).getName());
 		assertEquals(3 , testCourses.get(7).getCredit());
 		assertEquals("MWF" , testCourses.get(7).getDays());
 		assertEquals(8.0 , testCourses.get(7).getStartTime(), .1);
