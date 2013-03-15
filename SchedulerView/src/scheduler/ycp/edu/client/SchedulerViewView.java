@@ -166,10 +166,10 @@ public class SchedulerViewView extends Composite implements ISubscriber{
 		for (CourseType c : CourseType.values()) {
 			if (model.getRequiredList().contains(c)) {
 				requiredListBox.addItem(c.toString());
-			} else {
-				courseListBox.addItem(c.toString());
-			}
-			if (model.getOptionalList().contains(c)) {
+//			} else {
+//				courseListBox.addItem(c.toString());
+//			}
+			} else if (model.getOptionalList().contains(c)) {
 				optionalListBox.addItem(c.toString());
 			} else {
 				courseListBox.addItem(c.toString());

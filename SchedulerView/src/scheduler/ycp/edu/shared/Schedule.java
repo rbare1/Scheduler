@@ -1,9 +1,11 @@
 package scheduler.ycp.edu.shared;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Schedule extends Publisher{
+@SuppressWarnings("serial")
+public class Schedule extends Publisher implements Serializable{
 	public enum Events{
 		ADD_REQUIRED,
 		REMOVE_REQUIRED,
