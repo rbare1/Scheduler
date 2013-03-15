@@ -3,6 +3,7 @@ package scheduler.ycp.edu;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -24,6 +25,7 @@ public class ListReadTest {
 
 	@Test
 	public void testListRead() throws Exception {
+
 		assertEquals("CS101", testCourses.get(0).getNum());
 
 		assertEquals(20168 , testCourses.get(0).getCRNNum());
@@ -51,5 +53,4 @@ public class ListReadTest {
 
 
 	}
-
 }

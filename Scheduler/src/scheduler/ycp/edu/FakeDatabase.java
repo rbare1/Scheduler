@@ -1,5 +1,6 @@
 package scheduler.ycp.edu;
 
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -81,7 +82,3 @@ public class FakeDatabase implements IDatabase {
 		}
 	}
 }
-/* Current Issue:
- * All values of the array lists are stored fine and the prevCourseName changes with each iteration but the array lists are 
- * all being stored under the key CS101
- */

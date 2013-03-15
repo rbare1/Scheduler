@@ -15,6 +15,7 @@ public class FakeDatabase implements IDatabase {
 		course.setName("Test Course");
 		
 		coursesByName.put(course.getName(), course);
+
 	}
 	
 	@Override
