@@ -10,42 +10,30 @@ public class Generate {
 	private static List<Course> scheduleW = new ArrayList<Course>();
 	private static List<Course> scheduleR = new ArrayList<Course>();
 	private static List<Course> scheduleF = new ArrayList<Course>();
+	private static boolean checkReqCon;	// if this is false then two required courses conflict and the user
+										// will have to input a new schedule
 	private List<String> track = new ArrayList<String>();
+	private int numReq;
 	
 	boolean checkOpen = false;
 
 	
-	public void GenerateSchedule(Course course1, Course course2, Course course3, Course course4, Course course5, Course course6, Course course7){
-		int numCourses = 5;
-		int cnt = 0;
+	public void GenerateSchedule(List <Course> requiredCourses, List<Course> optionalCourses){
+		checkReqCon = true;
+		numReq = requiredCourses.size();
 		Course course;
 		checkOpen = false;
+		List<Course> courseList = new ArrayList<Course>();
+		courseList.addAll(requiredCourses);
+		courseList.addAll(optionalCourses);
+		int numCourses = courseList.size();
 		
 		for(int i = 0; i < numCourses; i++){		// cycles through each course to add to the appropriate list
 			track.clear();	//clears the tracker for each course
 			
-			if(cnt == 0){
-				course = course1;
-			}
-			else if(cnt == 1){
-				course = course2;
-			}
-			else if(cnt == 2){
-				course = course3;
-			}
-			else if(cnt == 3){
-				course = course4;
-			}
-			else if(cnt == 4){
-				course = course5;
-			}
-			else if(cnt == 5){
-				course = course6;
-			}
-			else{
-				course = course7;
-			}
-			cnt++;
+			course = courseList.get(i);
+			
+			
 			// separates classes by the day of the week they are in
 			// classes can be in multiple days
 
@@ -56,7 +44,10 @@ public class Generate {
 					track.add("M");
 				}
 				else{
-					removeCourse();
+					removeCourse(i);
+					if(checkReqCon = false){	// if two required courses conflict, break
+						break;
+					}
 				}
 			}
 			if(course.getDays() == "T" || course.getDays() == "TR"){
@@ -66,7 +57,10 @@ public class Generate {
 					track.add("T");
 				}	
 				else{
-					removeCourse();
+					removeCourse(i);
+					if(checkReqCon = false){
+						break;
+					}
 				}
 			}
 			if(course.getDays() == "W" || course.getDays() == "WF" || course.getDays() == "MW" || course.getDays() == "MWF"){
@@ -76,7 +70,10 @@ public class Generate {
 					track.add("W");
 				}
 				else{
-					removeCourse();
+					removeCourse(i);
+					if(checkReqCon = false){
+						break;
+					}
 				}
 			}
 			if(course.getDays() == "R" || course.getDays() == "TR"){
@@ -86,7 +83,10 @@ public class Generate {
 					track.add("R");
 				}
 				else{
-					removeCourse();
+					removeCourse(i);
+					if(checkReqCon = false){
+						break;
+					}
 				}
 			}
 			if(course.getDays() == "F" || course.getDays() == "WF" || course.getDays() == "MWF"){
@@ -96,7 +96,10 @@ public class Generate {
 					track.add("F");
 				}
 				else{
-					removeCourse();
+					removeCourse(i);
+					if(checkReqCon = false){
+						break;
+					}
 				}
 			}
 		}
@@ -223,7 +226,7 @@ public class Generate {
 		return checkOpen;
 	}
 	
-	public void removeCourse(){		// removes a course from any other schedule it may have been added to before the time conflict
+	public void removeCourse(int courseNum){		// removes a course from any other schedule it may have been added to before the time conflict
 		for(int i = 0; i < track.size(); i++){
 			if(track.get(i) == "M"){
 				scheduleM.remove(scheduleM.size() -1);
@@ -238,8 +241,11 @@ public class Generate {
 				scheduleR.remove(scheduleR.size() - 1);
 			}
 			if(track.get(i) == "F"){
-				scheduleR.remove(scheduleF.size() -1);
+				scheduleF.remove(scheduleF.size() -1);
 			}
+		}
+		if(courseNum < numReq){
+			checkReqCon = false;
 		}
 		
 	}

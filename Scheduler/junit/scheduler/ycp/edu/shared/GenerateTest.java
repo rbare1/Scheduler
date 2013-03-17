@@ -28,6 +28,9 @@ public class GenerateTest {
 		private List<Course> scheduleW = new ArrayList<Course>();
 		private List<Course> scheduleR = new ArrayList<Course>();
 		private List<Course> scheduleF = new ArrayList<Course>();
+		
+		private List<Course> reqCourseList = new ArrayList<Course>();
+		private List<Course> optCourseList = new ArrayList<Course>();
 
 		Generate generate = new Generate();
 		@Before
@@ -37,6 +40,7 @@ public class GenerateTest {
 			course1.setDays("MWF");
 			course1.setStartTime(9.0);
 			course1.setEndTime(10.15);
+			
 			
 			course2.setNum("ART101");
 			course2.setDays("MW");
@@ -68,7 +72,16 @@ public class GenerateTest {
 			course7.setStartTime(1.0);	// intentional conflict with PHY101
 			course7.setEndTime(2.0);
 			
-			generate.GenerateSchedule(course1, course2, course3, course4, course5, course6, course7);
+			reqCourseList.add(course1);
+			reqCourseList.add(course2);
+			reqCourseList.add(course3);
+			reqCourseList.add(course4);
+			reqCourseList.add(course5);
+			reqCourseList.add(course6);
+			reqCourseList.add(course7);
+			
+			
+			generate.GenerateSchedule(reqCourseList, optCourseList);
 			scheduleM = generate.getScheduleM();
 			scheduleT = generate.getScheduleT();
 			scheduleW = generate.getScheduleW();
