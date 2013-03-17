@@ -1,6 +1,5 @@
 package scheduler.ycp.edu.client;
 
-import scheduler.ycp.edu.Course;
 import scheduler.ycp.edu.shared.Schedule;
 
 import com.google.gwt.user.client.rpc.RemoteService;
