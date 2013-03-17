@@ -3,11 +3,12 @@ package scheduler.ycp.edu;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Test;
+import scheduler.ycp.edu.shared.Course;
+import scheduler.ycp.edu.shared.ListRead;
 
 import scheduler.ycp.edu.shared.Course;
 import scheduler.ycp.edu.shared.ListRead;
@@ -16,7 +17,7 @@ public class ListReadTest {
 	private ListRead list;
 	private File fileName;
 	private List<Course> testCourses;
-
+	
 	@Before
 	public void setUp() throws Exception {
 		fileName = new File("Course_List.csv");
@@ -49,5 +50,4 @@ public class ListReadTest {
 		assertEquals("WOLF 316", testCourses.get(7).getRoom());
 
 	}
-
 }

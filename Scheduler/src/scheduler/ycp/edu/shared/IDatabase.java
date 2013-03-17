@@ -1,5 +1,6 @@
 package scheduler.ycp.edu.shared;
 
+
 import java.util.List;
 
 public interface IDatabase {

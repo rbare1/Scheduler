@@ -1,12 +1,9 @@
 package scheduler.ycp.edu;
 
 import static org.junit.Assert.*;
-
 import java.io.File;
-
 import org.junit.Before;
 import org.junit.Test;
-
 import scheduler.ycp.edu.shared.Course;
 import scheduler.ycp.edu.shared.FakeDatabase;
 

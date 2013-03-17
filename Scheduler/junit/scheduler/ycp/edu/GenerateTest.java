@@ -13,7 +13,6 @@ import scheduler.ycp.edu.shared.Generate;
 
 public class GenerateTest {
 
-	// fields for text fixture objects
 	private Course course1 = new Course(null, 0, null, 0, null, 0, 0, null, null);
 	private Course course2 = new Course(null, 0, null, 0, null, 0, 0, null, null);
 	private Course course3 = new Course(null, 0, null, 0, null, 0, 0, null, null);
@@ -36,6 +35,7 @@ public class GenerateTest {
 	@Before
 	public void setUp() {
 		// create test fixture objects
+
 		course1.setNum("CS101");
 		course1.setDays("MWF");
 		course1.setStartTime(9.0);
