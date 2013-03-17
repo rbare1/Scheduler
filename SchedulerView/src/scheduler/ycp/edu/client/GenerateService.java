@@ -1,5 +1,9 @@
 package scheduler.ycp.edu.client;
 
+<<<<<<< HEAD
+=======
+import scheduler.ycp.edu.Course;
+>>>>>>> branch 'master' of git@github.com:rbare1/Scheduler.git
 import scheduler.ycp.edu.shared.Schedule;
 
 import com.google.gwt.user.client.rpc.RemoteService;
