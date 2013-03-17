@@ -41,7 +41,7 @@ public class ListReadTest {
 		assertEquals("ART101", testCourses.get(7).getNum());
 
 		assertEquals(20759 , testCourses.get(7).getCRNNum());
-		assertEquals("Into Art Apprec", testCourses.get(7).getName());
+		assertEquals("Intro Art Apprec", testCourses.get(7).getName());
 		assertEquals(3 , testCourses.get(7).getCredit());
 		assertEquals("MWF" , testCourses.get(7).getDays());
 		assertEquals(8.0 , testCourses.get(7).getStartTime(), .1);
