@@ -12,7 +12,6 @@ import scheduler.ycp.edu.shared.Course;
 import scheduler.ycp.edu.shared.Generate;
 
 public class GenerateTest {
-<<<<<<< HEAD
 
 	private Course course1 = new Course(null, 0, null, 0, null, 0, 0, null, null);
 	private Course course2 = new Course(null, 0, null, 0, null, 0, 0, null, null);
@@ -21,15 +20,6 @@ public class GenerateTest {
 	private Course course5 = new Course(null, 0, null, 0, null, 0, 0, null, null);
 	private Course course6 = new Course(null, 0, null, 0, null, 0, 0, null, null);
 	private Course course7 = new Course(null, 0, null, 0, null, 0, 0, null, null);
-=======
-/*
-	// fields for text fixture objects
-		private Course course1 = new Course();
-		private Course course2 = new Course();
-		private Course course3 = new Course();
-		private Course course4 = new Course();
-		private Course course5 = new Course();
->>>>>>> branch 'master' of git@github.com:rbare1/Scheduler.git
 
 	private List<Course> scheduleM = new ArrayList<Course>();
 	private List<Course> scheduleT = new ArrayList<Course>();
@@ -45,7 +35,6 @@ public class GenerateTest {
 	@Before
 	public void setUp() {
 		// create test fixture objects
-<<<<<<< HEAD
 
 		course1.setNum("CS101");
 		course1.setDays("MWF");
@@ -97,29 +86,6 @@ public class GenerateTest {
 		scheduleR = generate.getScheduleR();
 		scheduleF = generate.getScheduleF();
 
-=======
-			course1.setName("CS101");
-			course1.setDays("MWF");
-			
-			course2.setName("ART101");
-			course2.setDays("MW");
-			
-			course3.setName("PE101");
-			course3.setDays("F");
-			
-			course4.setName("ECE101");
-			course4.setDays("TR");
-			
-			course5.setName("PHY101");
-			course1.setDays("R");
-		}
-	*/		
-	@Test
-public void testGetCourse() throws Exception {		
-//		assertEquals("CS101", course1.);
-		//assertEquals("CS101", course1.);
-		
->>>>>>> branch 'master' of git@github.com:rbare1/Scheduler.git
 	}
 
 	@Test
