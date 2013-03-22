@@ -16,7 +16,7 @@ import scheduler.ycp.edu.shared.Schedule;
 public class GenerateView extends Composite implements ISubscriber{
 	
 	private Schedule model;
-	private SchedulerViewView schedulerViewView;
+	//private SchedulerViewView schedulerViewView;
 
 	public GenerateView() {
 		FlowPanel panel = new FlowPanel();
