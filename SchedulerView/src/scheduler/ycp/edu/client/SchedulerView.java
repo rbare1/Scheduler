@@ -20,16 +20,9 @@ import scheduler.ycp.edu.shared.Schedule;
  */
 public class SchedulerView implements EntryPoint {
 
-	private FakeDatabase database;
+
 	
 	public void onModuleLoad() {
-		File fileName = new File("Course_List.csv");
-		try {
-			database.CreateFakeDatabase(fileName);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		FlowPanel panel = new FlowPanel();
 		
 //		SchedulerViewView schedulerView = new SchedulerViewView();
