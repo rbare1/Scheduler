@@ -35,12 +35,14 @@ public class SchedulerViewView extends Composite implements ISubscriber{
 		layoutPanel.add(courseListBox);
 		layoutPanel.setWidgetLeftWidth(courseListBox, 37.0, Unit.PX, 185.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(courseListBox, 33.0, Unit.PX, 392.0, Unit.PX);
+		
 		Collection<String> tempCourseList = database.getDatabase().keySet();
 		for(int i = 0; i < tempCourseList.size(); i++){
 			if(tempCourseList.iterator().hasNext()){
 				courseListBox.addItem(tempCourseList.iterator().next());
 			}
 		}
+		
 		//courseListBox.setVisibleItemCount(5);
 		
 		Button buttonAddRequired = new Button("New button");
