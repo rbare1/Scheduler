@@ -25,7 +25,7 @@ public class ScheduleServiceImpl extends RemoteServiceServlet implements Generat
 		return true;
 	}
 	
-	public Boolean pullSchedule(){
+	public Boolean pullDatabase(){
 		
 		File fileName = new File("Course_List.csv");
 		try {

@@ -7,5 +7,5 @@ import scheduler.ycp.edu.shared.FakeDatabase;
 
 public interface DatabaseService {
 
-	public Boolean pullDatabase(String message);
+	public Boolean pullDatabase();
 }

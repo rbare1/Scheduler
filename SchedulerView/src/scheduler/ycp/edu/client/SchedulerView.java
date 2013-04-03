@@ -1,8 +1,6 @@
 package scheduler.ycp.edu.client;
 
 
-import java.io.File;
-import java.io.IOException;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.dom.client.Style.Unit;
@@ -10,7 +8,6 @@ import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 
 
-import scheduler.ycp.edu.shared.FakeDatabase;
 import scheduler.ycp.edu.shared.Generate;
 import scheduler.ycp.edu.shared.Schedule; 
 
