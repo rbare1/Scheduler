@@ -1,14 +1,20 @@
 package scheduler.ycp.edu.client;
 
 import java.util.Collection;
-import scheduler.ycp.edu.shared.FakeDatabase;
+
+import scheduler.ycp.edu.server.FakeDatabase;
+import scheduler.ycp.edu.server.ScheduleServiceImpl;
+import scheduler.ycp.edu.shared.Generate;
+import scheduler.ycp.edu.shared.KeyList;
 import scheduler.ycp.edu.shared.Schedule;
 import scheduler.ycp.edu.shared.IPublisher;
 import scheduler.ycp.edu.shared.ISubscriber;
 
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.LayoutPanel;
 import com.google.gwt.user.client.ui.ListBox;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -23,20 +29,22 @@ public class SchedulerViewView extends Composite implements ISubscriber{
 	private ListBox optionalListBox;
 	private ListBox courseListBox;
 	private String c;
-	FakeDatabase database;
+	private Collection<String> tempCourseList;
+	
 	
 	public SchedulerViewView() {
-		
 		LayoutPanel layoutPanel = new LayoutPanel();
 		initWidget(layoutPanel);
 		layoutPanel.setSize("687px", "479px");
 		
+		KeyList keyList = new KeyList();
 		courseListBox = new ListBox();
 		layoutPanel.add(courseListBox);
 		layoutPanel.setWidgetLeftWidth(courseListBox, 37.0, Unit.PX, 185.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(courseListBox, 33.0, Unit.PX, 392.0, Unit.PX);
-		
-		Collection<String> tempCourseList = database.getDatabase().keySet();
+		layoutPanel.setWidgetTopHeight(courseListBox, 33.0, Unit.PX, 392.0, Unit.PX);		
+	//	Collection<String> tempCourseList = handleKeyList();
+		handleDatabase();
+		handleKeyList();
 		for(int i = 0; i < tempCourseList.size(); i++){
 			if(tempCourseList.iterator().hasNext()){
 				courseListBox.addItem(tempCourseList.iterator().next());
@@ -127,6 +135,42 @@ public class SchedulerViewView extends Composite implements ISubscriber{
 		layoutPanel.setWidgetTopHeight(lblOptionalCourses, 226.0, Unit.PX, 18.0, Unit.PX);
 	}
 	
+	//create fake database
+	protected void handleDatabase() {
+		RPC.keyListService.pullDatabase(new AsyncCallback<Boolean>(){
+
+			@Override
+			public void onFailure(Throwable caught) {
+				GWT.log("Fail!", caught);
+
+			}
+
+			@Override
+			public void onSuccess(Boolean result) {
+				
+			}
+
+		});
+
+	}
+	
+	//create pull list of keys
+	protected void handleKeyList() {
+		RPC.keyListService.pullKeyList(new AsyncCallback<Collection<String>>(){
+
+			@Override
+			public void onFailure(Throwable caught) {
+				GWT.log("Fail!", caught);
+
+			}
+
+			@Override
+			public void onSuccess(Collection<String> result) {
+				tempCourseList = result;
+
+			}});
+
+		}
 
 	protected void handleAddRequired() {
 		int index = courseListBox.getSelectedIndex();
