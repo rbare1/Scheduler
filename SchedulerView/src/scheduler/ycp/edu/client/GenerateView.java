@@ -8,7 +8,7 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 
-import scheduler.ycp.edu.shared.Generate;
+import scheduler.ycp.edu.shared.GenerateInit;
 import scheduler.ycp.edu.shared.IPublisher;
 import scheduler.ycp.edu.shared.ISubscriber;
 import scheduler.ycp.edu.shared.Schedule;
@@ -51,7 +51,7 @@ public class GenerateView extends Composite implements ISubscriber{
 
 			@Override
 			public void onSuccess(Boolean result) {
-				Generate generate = new Generate();
+				GenerateInit generate = new GenerateInit();
 				for(int i = 0; i <   generate.getRequiredList().size(); i++){
 					GWT.log(generate.getRequiredList().get(i).toString());
 				}	

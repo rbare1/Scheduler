@@ -1,10 +1,11 @@
 package scheduler.ycp.edu.client;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import scheduler.ycp.edu.server.FakeDatabase;
+import scheduler.ycp.edu.server.Generate;
 import scheduler.ycp.edu.server.ScheduleServiceImpl;
-import scheduler.ycp.edu.shared.Generate;
 import scheduler.ycp.edu.shared.KeyList;
 import scheduler.ycp.edu.shared.Schedule;
 import scheduler.ycp.edu.shared.IPublisher;
@@ -29,7 +30,8 @@ public class SchedulerViewView extends Composite implements ISubscriber{
 	private ListBox optionalListBox;
 	private ListBox courseListBox;
 	private String c;
-	private Collection<String> tempCourseList;
+	private ArrayList<String> tempCourseList;
+	private int courseListSize;
 	
 	
 	public SchedulerViewView() {
@@ -37,21 +39,17 @@ public class SchedulerViewView extends Composite implements ISubscriber{
 		initWidget(layoutPanel);
 		layoutPanel.setSize("687px", "479px");
 		
-		KeyList keyList = new KeyList();
+		//KeyList keyList = new KeyList();
 		courseListBox = new ListBox();
 		layoutPanel.add(courseListBox);
 		layoutPanel.setWidgetLeftWidth(courseListBox, 37.0, Unit.PX, 185.0, Unit.PX);
 		layoutPanel.setWidgetTopHeight(courseListBox, 33.0, Unit.PX, 392.0, Unit.PX);		
 	//	Collection<String> tempCourseList = handleKeyList();
-		handleDatabase();
+		//handleDatabase();
 		handleKeyList();
-		for(int i = 0; i < tempCourseList.size(); i++){
-			if(tempCourseList.iterator().hasNext()){
-				courseListBox.addItem(tempCourseList.iterator().next());
-			}
-		}
 		
-		//courseListBox.setVisibleItemCount(5);
+		
+		courseListBox.setVisibleItemCount(100);
 		
 		Button buttonAddRequired = new Button("New button");
 		buttonAddRequired.addClickHandler(new ClickHandler() {
@@ -156,7 +154,7 @@ public class SchedulerViewView extends Composite implements ISubscriber{
 	
 	//create pull list of keys
 	protected void handleKeyList() {
-		RPC.keyListService.pullKeyList(new AsyncCallback<Collection<String>>(){
+		RPC.keyListService.pullKeyList(new AsyncCallback<ArrayList<String>>(){
 
 			@Override
 			public void onFailure(Throwable caught) {
@@ -165,9 +163,15 @@ public class SchedulerViewView extends Composite implements ISubscriber{
 			}
 
 			@Override
-			public void onSuccess(Collection<String> result) {
+			public void onSuccess(ArrayList<String> result) {
 				tempCourseList = result;
-
+				for(int i = 0; i < tempCourseList.size(); i++){
+					if(tempCourseList.iterator().hasNext()){
+						courseListBox.addItem(tempCourseList.get(i));
+						GWT.log(tempCourseList.get(i));
+					}
+				}
+				courseListSize = tempCourseList.size();
 			}});
 
 		}
@@ -176,8 +180,8 @@ public class SchedulerViewView extends Composite implements ISubscriber{
 		int index = courseListBox.getSelectedIndex();
 		if (index >= 0) {
 			String item = courseListBox.getItemText(index);
-			c = String.valueOf(item);
-			model.addRequired(c);
+			c = item;
+			model.addRequired(item);
 		}		
 	}
 	
@@ -185,7 +189,7 @@ public class SchedulerViewView extends Composite implements ISubscriber{
 		int index = requiredListBox.getSelectedIndex();
 		if (index >= 0) {
 			String item = requiredListBox.getItemText(index);
-			c = String.valueOf(item);
+			c = item;
 			model.removeRequired(c);
 		}		
 	}
@@ -194,7 +198,7 @@ public class SchedulerViewView extends Composite implements ISubscriber{
 		int index = courseListBox.getSelectedIndex();
 		if (index >= 0) {
 			String item = courseListBox.getItemText(index);
-			c = String.valueOf(item);
+			c = item;
 			model.addOptional(c);
 		}		
 	}
@@ -203,7 +207,7 @@ public class SchedulerViewView extends Composite implements ISubscriber{
 		int index = optionalListBox.getSelectedIndex();
 		if (index >= 0) {
 			String item = optionalListBox.getItemText(index);
-			c = String.valueOf(item);
+			c = item;
 			model.removeOptional(c);
 		}		
 	}
@@ -218,7 +222,10 @@ public class SchedulerViewView extends Composite implements ISubscriber{
 		requiredListBox.clear();
 		optionalListBox.clear();
 		courseListBox.clear();
-		//for (String c : String.values()) {
+		// tempCourseList isn't available until handler finishes
+		// Need some sort of wait to wait until it is available.
+		for (int i = 0; i < courseListSize; i++) {
+			String c = tempCourseList.get(i);
 			if (model.getRequiredList().contains(c)) {
 				requiredListBox.addItem(c);
 			} else if (model.getOptionalList().contains(c)) {
@@ -226,7 +233,7 @@ public class SchedulerViewView extends Composite implements ISubscriber{
 			} else {
 				courseListBox.addItem(c);
 			}
-	//	}	
+		}	
 	}
 
 	@Override

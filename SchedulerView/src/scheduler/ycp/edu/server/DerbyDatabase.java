@@ -11,7 +11,6 @@ import java.util.Map;
 
 import scheduler.ycp.edu.server.DBUtil;
 import scheduler.ycp.edu.server.ITransaction;
-import scheduler.ycp.edu.shared.Course;
 
 public class DerbyDatabase implements IDatabase {
 
