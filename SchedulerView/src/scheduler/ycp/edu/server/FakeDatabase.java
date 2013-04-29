@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import scheduler.ycp.edu.shared.Course;
+
 public class FakeDatabase implements IDatabase {
 	private Map<String, List<Course>> coursesByName;
 	private ListRead list;

@@ -1,7 +1,9 @@
-package scheduler.ycp.edu.server;
+package scheduler.ycp.edu.shared;
 
 import java.util.ArrayList;
 import java.util.List;
+
+
 
 public class Generate { 
 	private static List<Course> scheduleM = new ArrayList<Course>();
