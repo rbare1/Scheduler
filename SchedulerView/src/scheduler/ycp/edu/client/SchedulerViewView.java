@@ -8,7 +8,6 @@ import scheduler.ycp.edu.server.FakeDatabase;
 import scheduler.ycp.edu.server.ScheduleServiceImpl;
 import scheduler.ycp.edu.shared.Generate;
 import scheduler.ycp.edu.shared.GenerateInit;
-import scheduler.ycp.edu.shared.KeyList;
 import scheduler.ycp.edu.shared.Schedule;
 import scheduler.ycp.edu.shared.IPublisher;
 import scheduler.ycp.edu.shared.ISubscriber;

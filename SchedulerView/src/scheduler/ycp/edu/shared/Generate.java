@@ -6,12 +6,13 @@ import java.util.List;
 
 
 public class Generate { 
-	private static List<Course> scheduleM = new ArrayList<Course>();
-	private static List<Course> scheduleT = new ArrayList<Course>();
-	private static List<Course> scheduleW = new ArrayList<Course>();
-	private static List<Course> scheduleR = new ArrayList<Course>();
-	private static List<Course> scheduleF = new ArrayList<Course>();
-	private static boolean checkReqCon;	// if this is false then two required courses conflict and the user
+	private List<Course> scheduleM = new ArrayList<Course>();
+	private List<Course> scheduleT = new ArrayList<Course>();
+	private List<Course> scheduleW = new ArrayList<Course>();
+	private List<Course> scheduleR = new ArrayList<Course>();
+	private List<Course> scheduleF = new ArrayList<Course>();
+	private List<Course> totalSchedule = new ArrayList<Course>();
+	private boolean checkReqCon;	// if this is false then two required courses conflict and the user
 										// will have to input a new schedule
 	private List<String> track = new ArrayList<String>();
 	private int numReq;
@@ -38,7 +39,7 @@ public class Generate {
 			// separates classes by the day of the week they are in
 			// classes can be in multiple days
 
-			if(course.getDays() == "M" || course.getDays() == "MW" || course.getDays() == "MWF"){	// using == since .contains isn't working
+			if(course.getDays().equals("M") || course.getDays().equals("MW") || course.getDays().equals("MWF")){	// using == since .contains isn't working
 				checkOpen = checkScheduleM(course);
 				if(checkOpen){
 					scheduleM.add(course);	
@@ -51,7 +52,7 @@ public class Generate {
 					}
 				}
 			}
-			if(course.getDays() == "T" || course.getDays() == "TR"){
+			if(course.getDays().equals("T") || course.getDays().equals("TR")){
 				checkOpen = checkScheduleT(course);
 				if(checkOpen){
 					scheduleT.add(course);
@@ -64,7 +65,7 @@ public class Generate {
 					}
 				}
 			}
-			if(course.getDays() == "W" || course.getDays() == "WF" || course.getDays() == "MW" || course.getDays() == "MWF"){
+			if(course.getDays().equals("W") || course.getDays().equals("WF") || course.getDays().equals("MW") || course.getDays().equals("MWF")){
 				checkOpen = checkScheduleW(course);
 				if(checkOpen){
 					scheduleW.add(course);
@@ -77,7 +78,7 @@ public class Generate {
 					}
 				}
 			}
-			if(course.getDays() == "R" || course.getDays() == "TR"){
+			if(course.getDays().equals("R") || course.getDays().equals("TR")){
 				checkOpen = checkScheduleR(course);
 				if(checkOpen){
 					scheduleR.add(course);
@@ -90,7 +91,7 @@ public class Generate {
 					}
 				}
 			}
-			if(course.getDays() == "F" || course.getDays() == "WF" || course.getDays() == "MWF"){
+			if(course.getDays().equals("F") || course.getDays().equals("WF") || course.getDays().equals("MWF")){
 				checkOpen = checkScheduleF(course);
 				if(checkOpen){
 					scheduleF.add(course);
@@ -125,6 +126,35 @@ public class Generate {
 	public List<Course> getScheduleF(){
 		//GenerateSchedule();
 		return scheduleF;
+	}
+	
+	public List<Course> getTotalSchedule() {
+		for(int i = 0; i < scheduleM.size(); i++){
+			if(!totalSchedule.contains(scheduleM.get(i))){
+				totalSchedule.add(scheduleM.get(i));
+			}
+		}
+		for(int i = 0; i < scheduleT.size(); i++){
+			if(!totalSchedule.contains(scheduleT.get(i))){
+				totalSchedule.add(scheduleT.get(i));
+			}
+		}
+		for(int i = 0; i < scheduleW.size(); i++){
+			if(!totalSchedule.contains(scheduleW.get(i))){
+				totalSchedule.add(scheduleW.get(i));
+			}
+		}
+		for(int i = 0; i < scheduleR.size(); i++){
+			if(!totalSchedule.contains(scheduleR.get(i))){
+				totalSchedule.add(scheduleR.get(i));
+			}
+		}
+		for(int i = 0; i < scheduleF.size(); i++){
+			if(!totalSchedule.contains(scheduleF.get(i))){
+				totalSchedule.add(scheduleF.get(i));
+			}
+		}
+		return totalSchedule;
 	}
 	
 	public boolean checkScheduleM(Course course){
@@ -229,19 +259,19 @@ public class Generate {
 	
 	public void removeCourse(int courseNum){		// removes a course from any other schedule it may have been added to before the time conflict
 		for(int i = 0; i < track.size(); i++){
-			if(track.get(i) == "M"){
+			if(track.get(i).equals("M")){
 				scheduleM.remove(scheduleM.size() -1);
 			}
-			if(track.get(i) == "T"){
+			if(track.get(i).equals("T")){
 				scheduleT.remove(scheduleT.size() -1);
 			}
-			if(track.get(i) == "W"){
+			if(track.get(i).equals("W")){
 				scheduleW.remove(scheduleW.size() -1);
 			}
-			if(track.get(i) == "R"){
+			if(track.get(i).equals("R")){
 				scheduleR.remove(scheduleR.size() - 1);
 			}
-			if(track.get(i) == "F"){
+			if(track.get(i).equals("F")){
 				scheduleF.remove(scheduleF.size() -1);
 			}
 		}
@@ -250,6 +280,7 @@ public class Generate {
 		}
 		
 	}
+	
 	
 }
 

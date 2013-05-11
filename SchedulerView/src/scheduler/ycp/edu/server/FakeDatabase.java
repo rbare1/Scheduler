@@ -2,6 +2,7 @@ package scheduler.ycp.edu.server;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -63,5 +64,18 @@ public class FakeDatabase implements IDatabase {
 	@Override
 	public Map<String, List<Course>> getDatabase() {
 		return coursesByName;
+	}
+
+	@Override
+	public ArrayList<Course> getSchedule(int scheduleID) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<Course> saveSchedule(ArrayList<Course> totalSchedule)
+			throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
